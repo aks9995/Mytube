@@ -1,30 +1,25 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './App.css';
+import AddUser from './components/AddUser';
+import EditUser from './components/EditUser';
+import AllUsers from './components/AllUsers';
+import Navbar from './components/Navbar';
+import UserManagementSys from './components/UserManagementSys';
 
-import Header from "./components/Header";
-import Feed from "./components/Feed";
-import SearchResult from "./components/SearchResult";
-import VideoDetails from "./components/VideoDetails";
-import { AppContext } from "./context/contextApi";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const App = () => {
+function App() {
   return (
-    <AppContext>
-      <BrowserRouter>
-        <div className="flex flex-col h-full">
-          <Header />
-          <Routes>
-            <Route path="/" exact element={<Feed />} />
-            <Route
-              path="/searchResult/:searchQuery"
-              element={<SearchResult />}
-            />
-            <Route path="/video/:id" element={<VideoDetails />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </AppContext>
+    <BrowserRouter>
+     <Navbar />
+     <Routes>
+     <Route path="/" element={ <UserManagementSys />} />
+     <Route path="/all" element={ <AllUsers />} />
+     <Route path="/add" element={ <AddUser />} />
+     <Route path="/edit/:id" element={ <EditUser />} />
+     </Routes>
+    </BrowserRouter>
+
   );
-};
+}
 
 export default App;
